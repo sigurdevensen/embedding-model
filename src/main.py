@@ -111,8 +111,8 @@ def main():
     id_sentences = [[word2idx[w] for w in sent] for sent in sentences]
 
     w_in, w_out = train(id_sentences, word2idx, freqs, dim=100, epochs=5, lr=0.025)
-    np.save("w_in.npy", w_in)
-    np.save("w_out.npy", w_out)
+    np.save("out/w_in.npy", w_in)
+    np.save("out/w_out.npy", w_out)
     print("Saved w_in.npy, w_out.npy, vocab_word2idx.npy, vocab_idx2word.npy")
 
     for probe in ("cook", "grandmother"):
