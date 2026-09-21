@@ -1,6 +1,6 @@
 import numpy as np
 
-from utils import sigmoid
+from utils.sigmoid import sigmoid
 
 def forward_pass(center, context, negatives, w_in, w_out):
     v_c = w_in[center]
