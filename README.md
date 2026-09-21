@@ -28,11 +28,4 @@ The pipeline runs in three stages:
 
 **3. Model + training** - two embedding matrices (`W_in`, `W_out`) are trained with plain SGD: `forward_pass` scores a pair with sigmoid, `gradient` computes the hand-derived gradients, `update_params` applies them. `current_lr` linearly decays the learning rate over training. `train` wires all of this into the full loop, run once per epoch, once per training pair.
 
-**Output**: `W_in`, the trained embedding matrix — one row per vocabulary word. `most_similar` looks up a word's nearest neighbors by cosine similarity.
-
-## Files
-
-| File | Description |
-|---|---|
-| `main.py` | Implementation of the model |
-| `test_model.py` | AI generated test script |
+**Output**: `W_in`, the trained embedding matrix - one row per vocabulary word. `most_similar` looks up a word's nearest neighbors by cosine similarity.
