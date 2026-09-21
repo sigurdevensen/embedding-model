@@ -11,7 +11,9 @@ def split_sentences(text: str) -> list:
 
 
 def tokenize(text: str) -> list:
-    clean_text = text.translate(str.maketrans('', '', string.punctuation))
+    clean_text = text.translate(
+        str.maketrans('', '', string.punctuation + '“”')
+    )
     tokens = clean_text.lower().split()
     return tokens
 
@@ -61,3 +63,15 @@ def generate_pairs(id_sentences, keep_prob, max_window):
                     pairs.append((center, surviving[j]))
 
     return pairs
+
+if __name__ == "__main__":
+    # Example usage
+    text = load_gutenberg("data/2600-0.txt")
+    sentences = split_sentences(text)
+    tokenized_sentences = [tokenize(s) for s in sentences]
+    flat_tokens = [tok for sent in tokenized_sentences for tok in sent]
+    word2idx, idx2word, freqs = frequency(flat_tokens)
+
+    print(f"Vocab size: {len(word2idx)}  |  Total tokens: {len(flat_tokens)}  |  Sentences: {len(sentences)}")
+
+    print(f"words: {list(word2idx.keys())}")
