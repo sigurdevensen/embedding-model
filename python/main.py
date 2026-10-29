@@ -5,7 +5,7 @@ import numpy as np
 
 from utils.tokenize import load_gutenberg, split_sentences, tokenize, frequency, generate_pairs
 from utils.sampling import subsample_probs, negative_sampling
-from utils.persistance import save_vocab
+from utils.persistance import save_vocab, OUT_DIR
 from utils.calc import forward_pass, gradient, update_params, current_lr
 
 
@@ -111,8 +111,8 @@ def main():
     id_sentences = [[word2idx[w] for w in sent] for sent in sentences]
 
     w_in, w_out = train(id_sentences, word2idx, freqs, dim=100, epochs=5, lr=0.025)
-    np.save("out/w_in.npy", w_in)
-    np.save("out/w_out.npy", w_out)
+    np.save(f"{OUT_DIR}/w_in.npy", w_in)
+    np.save(f"{OUT_DIR}/w_out.npy", w_out)
     print("Saved w_in.npy, w_out.npy, vocab_word2idx.npy, vocab_idx2word.npy")
 
     for probe in ("cook", "grandmother"):
