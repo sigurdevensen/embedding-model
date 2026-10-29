@@ -3,19 +3,34 @@
 An implementation of Word2Vec (Skip-Gram with Negative Sampling), using only NumPy. Every gradient is derived by hand.
 The code is written manually, however shoutout to Claude for helping me with the math.
 
-## Requirements
+## Project layout
 
-- Python 3.9+
-- NumPy
-
-```bash
-pip install numpy
+```
+data/      shared training corpus
+python/    reference implementation (NumPy)
+cpp/       C++ port (work in progress)
+out/       trained artifacts, one subfolder per implementation
 ```
 
-## Usage
+All commands are run from the repo root.
+
+## Python
+
+Requires Python 3.9+ and NumPy.
 
 ```bash
-python main.py
+pip install -r python/requirements.txt
+python python/main.py         # train, writes to out/python/
+python python/test_model.py   # interactive REPL for the trained embeddings
+```
+
+## C++
+
+Requires CMake 3.16+ and a C++20 compiler.
+
+```bash
+cmake -S cpp -B cpp/build
+cmake --build cpp/build
 ```
 
 ## How it works
