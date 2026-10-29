@@ -1,26 +1,20 @@
+#include "utils/tokenize.hpp"
+
 #include <iostream>
-#include <vector>
 #include <string>
-#include <sstream>
-
-std::vector<std::string> split_sentences(const std::string& text) {
-    std::vector<std::string> sentences;
-    std::stringstream ss(text);
-    std::string sentence;
-
-    while (std::getline(ss, sentence, '.')) {
-        if (!sentence.empty()) {
-            sentences.push_back(sentence);
-        }
-    }
-
-    return sentences;
-}
+#include <vector>
 
 int main() {
-    std::vector<std::string> sentences = split_sentences("This is the first sentence. This is the second sentence. And this is the third sentence.");
+    std::string text = tokenize("Hello world! This is a test. Let's see how it works.");
+    std::cout << text << std::endl;
+
+    std::vector<std::string> sentences = split_sentences(text);
+
     for (const auto& sentence : sentences) {
         std::cout << sentence << std::endl;
     }
+
+    Tokens tokens = frequency(text);
+    std::cout << "Vocab size: " << tokens.word2idx.size() << " | Total tokens " << tokens.freqs.size() << " | Sentences " << sentences.size() << std::endl;
     return 0;
 }
