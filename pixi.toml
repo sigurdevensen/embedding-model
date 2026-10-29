@@ -1,0 +1,18 @@
+[workspace]
+name = "embedding-model"
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-arm64"]
+
+[dependencies]
+python = "3.12.*"
+numpy = "*"
+cmake = "*"
+ninja = "*"
+cxx-compiler = "*"
+
+[tasks]
+train-py  = "python python/main.py"
+test-py   = "python python/test_model.py"
+configure = "cmake -S cpp -B cpp/build -G Ninja -DCMAKE_BUILD_TYPE=Release"
+build     = { cmd = "cmake --build cpp/build", depends-on = ["configure"] }
+cpp   = { cmd = "cpp/build/embedding", depends-on = ["build"] }

@@ -12,25 +12,23 @@ cpp/       C++ port (work in progress)
 out/       trained artifacts, one subfolder per implementation
 ```
 
-All commands are run from the repo root.
+## Setup
 
-## Python
-
-Requires Python 3.9+ and NumPy.
+The environment (Python, NumPy, CMake, Ninja, C++ compiler) is managed by [pixi](https://pixi.sh). On Windows the compiler is MSVC, so Visual Studio with the "Desktop development with C++" workload must be installed.
 
 ```bash
-pip install -r python/requirements.txt
-python python/main.py         # train, writes to out/python/
-python python/test_model.py   # interactive REPL for the trained embeddings
+pixi install
 ```
 
-## C++
+## Usage
 
-Requires CMake 3.16+ and a C++20 compiler.
+All commands are run from the repo root.
 
 ```bash
-cmake -S cpp -B cpp/build
-cmake --build cpp/build
+pixi run train-py   # train the Python model, writes to out/python/
+pixi run test-py    # interactive REPL for the trained embeddings
+pixi run build      # configure + build the C++ version into cpp/build/
+pixi run run-cpp    # build and run the C++ version
 ```
 
 ## How it works

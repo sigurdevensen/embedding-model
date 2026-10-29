@@ -4,3 +4,6 @@ __pycache__/
 # C++ build output
 build/
 cpp/build/
+
+# pixi environment
+.pixi/
