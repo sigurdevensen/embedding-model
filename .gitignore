@@ -7,3 +7,5 @@ cpp/build/
 
 # pixi environment
 .pixi/
+
+.vscode/
