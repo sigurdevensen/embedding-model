@@ -13,3 +13,6 @@ struct Tokens {
 std::vector<std::string> split_sentences(const std::string& text);
 std::string tokenize(std::string text);
 Tokens frequency(std::string tokens);
+
+double sigmoid(double x);
+double sigmoid_derivative(double x);
